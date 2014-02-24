@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://service.webservices.jbiowh.org" xmlns:ax28="http://entities.gene.gene.datasets.jbiowhpersistence.org/xsd" xmlns:ax26="http://entities.genome.gene.datasets.jbiowhpersistence.org/xsd" xmlns:ax24="http://entities.dataset.datasets.jbiowhpersistence.org/xsd" xmlns:ax21="http://entities.protein.datasets.jbiowhpersistence.org/xsd" xmlns:ax22="http://util.java/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ax212="http://entities.taxonomy.datasets.jbiowhpersistence.org/xsd" xmlns:ax222="http://entities.omim.disease.datasets.jbiowhpersistence.org/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://service.webservices.jbiowh.org">
+    <wsdl:types>
+        <xs:schema xmlns:ax214="http://util.java/xsd" xmlns:ax213="http://entities.dataset.datasets.jbiowhpersistence.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://entities.taxonomy.datasets.jbiowhpersistence.org/xsd">
+            <xs:import namespace="http://entities.dataset.datasets.jbiowhpersistence.org/xsd"/>
+            <xs:import namespace="http://util.java/xsd"/>
+            <xs:complexType name="Taxonomy">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="dataSet" nillable="true" type="ax213:DataSet"/>
+                    <xs:element minOccurs="0" name="dataSetWID" type="xs:long"/>
+                    <xs:element minOccurs="0" name="division" nillable="true" type="ax212:TaxonomyDivision"/>
+                    <xs:element minOccurs="0" name="eMBLCode" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="gencode" nillable="true" type="ax212:TaxonomyGenCode"/>
+                    <xs:element minOccurs="0" name="inheritedDivision" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="inheritedGencode" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="inheritedMCGencode" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="mcgencode" nillable="true" type="ax212:TaxonomyGenCode"/>
+                    <xs:element minOccurs="0" name="parentTaxId" type="xs:long"/>
+                    <xs:element minOccurs="0" name="pmid" nillable="true" type="ax214:Collection"/>
+                    <xs:element minOccurs="0" name="rank" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="synonym" nillable="true" type="ax214:Collection"/>
+                    <xs:element minOccurs="0" name="taxId" type="xs:long"/>
+                    <xs:element minOccurs="0" name="taxonomyDivisionWID" type="xs:long"/>
+                    <xs:element minOccurs="0" name="taxonomyGenCodeWID" type="xs:long"/>
+                    <xs:element minOccurs="0" name="taxonomyMCGenCodeWID" type="xs:long"/>
+                    <xs:element minOccurs="0" name="taxonomySynonym" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="unparse" nillable="true" type="ax214:Set"/>
+                    <xs:element minOccurs="0" name="wid" nillable="true" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="TaxonomyDivision">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="code" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="comment" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" type="xs:int"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="wid" nillable="true" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="TaxonomyGenCode">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="abbreviation" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="code" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="genCodeId" type="xs:int"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="start" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="wid" nillable="true" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://util.java/xsd">
+            <xs:complexType name="Set">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="empty" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Collection">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="empty" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Map">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="empty" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax27="http://entities.dataset.datasets.jbiowhpersistence.org/xsd" xmlns:ax217="http://entities.protein.datasets.jbiowhpersistence.org/xsd" xmlns:ax216="http://entities.gene.gene.datasets.jbiowhpersistence.org/xsd" xmlns:ax218="http://entities.taxonomy.datasets.jbiowhpersistence.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://entities.genome.gene.datasets.jbiowhpersistence.org/xsd">
+            <xs:import namespace="http://entities.dataset.datasets.jbiowhpersistence.org/xsd"/>
+            <xs:import namespace="http://entities.gene.gene.datasets.jbiowhpersistence.org/xsd"/>
+            <xs:import namespace="http://entities.protein.datasets.jbiowhpersistence.org/xsd"/>
+            <xs:import namespace="http://entities.taxonomy.datasets.jbiowhpersistence.org/xsd"/>
+            <xs:complexType name="GenePTT">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="PFrom" type="xs:long"/>
+                    <xs:element minOccurs="0" name="PLength" type="xs:int"/>
+                    <xs:element minOccurs="0" name="PTTFile" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="PTo" type="xs:long"/>
+                    <xs:element minOccurs="0" name="code" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="cog" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="dataSet" nillable="true" type="ax27:DataSet"/>
+                    <xs:element minOccurs="0" name="dataSetWID" type="xs:long"/>
+                    <xs:element minOccurs="0" name="geneInfo" nillable="true" type="ax28:GeneInfo"/>
+                    <xs:element minOccurs="0" name="geneLocusTag" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="geneSymbol" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="location" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="product" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="protein" nillable="true" type="ax21:Protein"/>
+                    <xs:element minOccurs="0" name="proteinGi" nillable="true" type="xs:long"/>
+                    <xs:element minOccurs="0" name="strand" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="taxonomy" nillable="true" type="ax218:Taxonomy"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://entities.dataset.datasets.jbiowhpersistence.org/xsd">
+            <xs:complexType name="DataSet">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="application" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="applicationVersion" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="changeDate" nillable="true" type="xs:date"/>
+                    <xs:element minOccurs="0" name="homeURL" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="loadDate" nillable="true" type="xs:date"/>
+                    <xs:element minOccurs="0" name="loadedBy" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="releaseDate" nillable="true" type="xs:date"/>
+                    <xs:element minOccurs="0" name="status" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="version" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="wid" nillable="true" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax29="http://util.java/xsd" xmlns:ax215="http://entities.taxonomy.datasets.jbiowhpersistence.org/xsd" xmlns:ax210="http://entities.dataset.datasets.jbiowhpersistence.org/xsd" xmlns:ax211="http://entities.genome.gene.datasets.jbiowhpersistence.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://entities.gene.gene.datasets.jbiowhpersistence.org/xsd">
+            <xs:import namespace="http://util.java/xsd"/>
+            <xs:import namespace="http://entities.dataset.datasets.jbiowhpersistence.org/xsd"/>
+            <xs:import namespace="http://entities.genome.gene.datasets.jbiowhpersistence.org/xsd"/>
+            <xs:import namespace="http://entities.taxonomy.datasets.jbiowhpersistence.org/xsd"/>
+            <xs:complexType name="GeneInfo">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="chromosome" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="cogOrthologousGroup" nillable="true" type="ax29:Set"/>
+                    <xs:element minOccurs="0" name="dataSet" nillable="true" type="ax24:DataSet"/>
+                    <xs:element minOccurs="0" name="dataSetWID" type="xs:long"/>
+                    <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="fullNameFromNomenclatureAuthority" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="gene2Ensembl" nillable="true" type="ax29:Collection"/>
+                    <xs:element minOccurs="0" name="gene2GenomicNucleotide" nillable="true" type="ax29:Collection"/>
+                    <xs:element minOccurs="0" name="gene2PMID" nillable="true" type="ax29:Collection"/>
+                    <xs:element minOccurs="0" name="gene2ProteinAccession" nillable="true" type="ax29:Collection"/>
+                    <xs:element minOccurs="0" name="gene2RNANucleotide" nillable="true" type="ax29:Collection"/>
+                    <xs:element minOccurs="0" name="gene2STS" nillable="true" type="ax29:Collection"/>
+                    <xs:element minOccurs="0" name="gene2UniGene" nillable="true" type="ax29:Collection"/>
+                    <xs:element minOccurs="0" name="geneGroup" nillable="true" type="ax29:Collection"/>
+                    <xs:element minOccurs="0" name="geneID" type="xs:long"/>
+                    <xs:element minOccurs="0" name="geneInfoDBXref" nillable="true" type="ax29:Collection"/>
+                    <xs:element minOccurs="0" name="geneInfoSynonym" nillable="true" type="ax29:Collection"/>
+                    <xs:element minOccurs="0" name="genePTT" nillable="true" type="ax26:GenePTT"/>
+                    <xs:element minOccurs="0" name="geneRNT" nillable="true" type="ax29:Set"/>
+                    <xs:element minOccurs="0" name="kEGGGenes" nillable="true" type="ax29:Set"/>
+                    <xs:element minOccurs="0" name="kEGGPathways" nillable="true" type="ax29:Set"/>
+                    <xs:element minOccurs="0" name="locusTag" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="mapLocation" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="modificationDate" nillable="true" type="xs:date"/>
+                    <xs:element minOccurs="0" name="nomenclatureStatus" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="omim" nillable="true" type="ax29:Set"/>
+                    <xs:element minOccurs="0" name="ontology" nillable="true" type="ax29:Set"/>
+                    <xs:element minOccurs="0" name="otherDesignations" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="protClust" nillable="true" type="ax29:Collection"/>
+                    <xs:element minOccurs="0" name="protein" nillable="true" type="ax29:Set"/>
+                    <xs:element minOccurs="0" name="symbol" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="symbolFromNomenclature" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="taxID" type="xs:long"/>
+                    <xs:element minOccurs="0" name="taxonomy" nillable="true" type="ax215:Taxonomy"/>
+                    <xs:element minOccurs="0" name="typeOfGene" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="wid" nillable="true" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax221="http://entities.protein.datasets.jbiowhpersistence.org/xsd" xmlns:ax225="http://entities.omim.disease.datasets.jbiowhpersistence.org/xsd" xmlns:ax226="http://entities.gene.gene.datasets.jbiowhpersistence.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://service.webservices.jbiowh.org">
+            <xs:import namespace="http://entities.protein.datasets.jbiowhpersistence.org/xsd"/>
+            <xs:import namespace="http://entities.omim.disease.datasets.jbiowhpersistence.org/xsd"/>
+            <xs:import namespace="http://entities.gene.gene.datasets.jbiowhpersistence.org/xsd"/>
+            <xs:element name="findProteinByID">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="id" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="findProteinByIDResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax21:Protein"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="findOmimByID">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="id" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="findOmimByIDResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax222:OMIM"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="findRange">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="range" type="xs:int"/>
+                        <xs:element minOccurs="0" name="args1" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="findRangeResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax28:GeneInfo"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="findByGeneID">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="id" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="findByGeneIDResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax28:GeneInfo"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="findProteinByGeneID">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="id" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="findProteinByGeneIDResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax21:Protein"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="findOMIMByGeneID">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="id" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="findOMIMByGeneIDResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax222:OMIM"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="find">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="id" type="xs:long"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="findResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax28:GeneInfo"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema xmlns:ax223="http://entities.dataset.datasets.jbiowhpersistence.org/xsd" xmlns:ax224="http://util.java/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://entities.omim.disease.datasets.jbiowhpersistence.org/xsd">
+            <xs:import namespace="http://entities.dataset.datasets.jbiowhpersistence.org/xsd"/>
+            <xs:import namespace="http://util.java/xsd"/>
+            <xs:complexType name="OMIM">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="dataSet" nillable="true" type="ax223:DataSet"/>
+                    <xs:element minOccurs="0" name="dataSetWID" type="xs:long"/>
+                    <xs:element minOccurs="0" name="geneInfo" nillable="true" type="ax224:Collection"/>
+                    <xs:element minOccurs="0" name="omimAV" nillable="true" type="ax224:Set"/>
+                    <xs:element minOccurs="0" name="omimCD" nillable="true" type="ax224:Set"/>
+                    <xs:element minOccurs="0" name="omimCN" nillable="true" type="ax224:Set"/>
+                    <xs:element minOccurs="0" name="omimCS" nillable="true" type="ax224:Set"/>
+                    <xs:element minOccurs="0" name="omimED" nillable="true" type="ax224:Set"/>
+                    <xs:element minOccurs="0" name="omimId" type="xs:long"/>
+                    <xs:element minOccurs="0" name="omimRF" nillable="true" type="ax224:Set"/>
+                    <xs:element minOccurs="0" name="omimSA" nillable="true" type="ax224:Set"/>
+                    <xs:element minOccurs="0" name="omimTI" nillable="true" type="ax224:Set"/>
+                    <xs:element minOccurs="0" name="omimTX" nillable="true" type="ax224:Set"/>
+                    <xs:element minOccurs="0" name="tx" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="wid" nillable="true" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax25="http://entities.dataset.datasets.jbiowhpersistence.org/xsd" xmlns:ax23="http://util.java/xsd" xmlns:ax219="http://entities.genome.gene.datasets.jbiowhpersistence.org/xsd" xmlns:ax220="http://entities.taxonomy.datasets.jbiowhpersistence.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://entities.protein.datasets.jbiowhpersistence.org/xsd">
+            <xs:import namespace="http://util.java/xsd"/>
+            <xs:import namespace="http://entities.dataset.datasets.jbiowhpersistence.org/xsd"/>
+            <xs:import namespace="http://entities.genome.gene.datasets.jbiowhpersistence.org/xsd"/>
+            <xs:import namespace="http://entities.taxonomy.datasets.jbiowhpersistence.org/xsd"/>
+            <xs:complexType name="Protein">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="checksum" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="cogOrthologousGroup" nillable="true" type="ax23:Set"/>
+                    <xs:element minOccurs="0" name="created" nillable="true" type="xs:date"/>
+                    <xs:element minOccurs="0" name="dataSet" nillable="true" type="ax25:DataSet"/>
+                    <xs:element minOccurs="0" name="dataSetIn" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="dataSetWID" type="xs:long"/>
+                    <xs:element minOccurs="0" name="drugBank" nillable="true" type="ax23:Set"/>
+                    <xs:element minOccurs="0" name="drugBankAsCarriers" nillable="true" type="ax23:Set"/>
+                    <xs:element minOccurs="0" name="drugBankAsEnzyme" nillable="true" type="ax23:Set"/>
+                    <xs:element minOccurs="0" name="drugBankAsTransporters" nillable="true" type="ax23:Set"/>
+                    <xs:element minOccurs="0" name="existence" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="fastaFormat" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="fragment" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="geneInfo" nillable="true" type="ax23:Collection"/>
+                    <xs:element minOccurs="0" name="genePTT" nillable="true" type="ax26:GenePTT"/>
+                    <xs:element minOccurs="0" name="kEGGEnzymes" nillable="true" type="ax23:Set"/>
+                    <xs:element minOccurs="0" name="kEGGPathways" nillable="true" type="ax23:Set"/>
+                    <xs:element minOccurs="0" name="mIFEntryInteraction" nillable="true" type="ax23:Set"/>
+                    <xs:element minOccurs="0" name="mass" nillable="true" type="xs:int"/>
+                    <xs:element minOccurs="0" name="modified" nillable="true" type="xs:date"/>
+                    <xs:element minOccurs="0" name="ontology" nillable="true" type="ax23:Set"/>
+                    <xs:element minOccurs="0" name="pIRSFhasProtein" nillable="true" type="ax23:Map"/>
+                    <xs:element minOccurs="0" name="pfamAInsignificant" nillable="true" type="ax23:Set"/>
+                    <xs:element minOccurs="0" name="pfamASignificant" nillable="true" type="ax23:Set"/>
+                    <xs:element minOccurs="0" name="precursor" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="proteinAccessionNumber" nillable="true" type="ax23:Collection"/>
+                    <xs:element minOccurs="0" name="proteinBioCyc" nillable="true" type="ax23:Collection"/>
+                    <xs:element minOccurs="0" name="proteinComment" nillable="true" type="ax23:Set"/>
+                    <xs:element minOccurs="0" name="proteinDBReference" nillable="true" type="ax23:Set"/>
+                    <xs:element minOccurs="0" name="proteinDIP" nillable="true" type="ax23:Collection"/>
+                    <xs:element minOccurs="0" name="proteinDrugBank" nillable="true" type="ax23:Collection"/>
+                    <xs:element minOccurs="0" name="proteinEC" nillable="true" type="ax23:Collection"/>
+                    <xs:element minOccurs="0" name="proteinFeature" nillable="true" type="ax23:Set"/>
+                    <xs:element minOccurs="0" name="proteinFirstAccessionNumber" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="proteinIntAct" nillable="true" type="ax23:Collection"/>
+                    <xs:element minOccurs="0" name="proteinKEGG" nillable="true" type="ax23:Collection"/>
+                    <xs:element minOccurs="0" name="proteinKeyword" nillable="true" type="ax23:Set"/>
+                    <xs:element minOccurs="0" name="proteinLongName" nillable="true" type="ax23:Collection"/>
+                    <xs:element minOccurs="0" name="proteinLongNameDirected" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="proteinMINT" nillable="true" type="ax23:Collection"/>
+                    <xs:element minOccurs="0" name="proteinName" nillable="true" type="ax23:Collection"/>
+                    <xs:element minOccurs="0" name="proteinNameDirected" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="proteinPDB" nillable="true" type="ax23:Collection"/>
+                    <xs:element minOccurs="0" name="proteinPFAM" nillable="true" type="ax23:Collection"/>
+                    <xs:element minOccurs="0" name="proteinPMID" nillable="true" type="ax23:Collection"/>
+                    <xs:element minOccurs="0" name="seq" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="seqLength" nillable="true" type="xs:int"/>
+                    <xs:element minOccurs="0" name="seqModified" nillable="true" type="xs:date"/>
+                    <xs:element minOccurs="0" name="seqVersion" nillable="true" type="xs:int"/>
+                    <xs:element minOccurs="0" name="taxonomy" nillable="true" type="ax220:Taxonomy"/>
+                    <xs:element minOccurs="0" name="taxonomyHost" nillable="true" type="ax23:Set"/>
+                    <xs:element minOccurs="0" name="uniRefEntry" nillable="true" type="ax23:Set"/>
+                    <xs:element minOccurs="0" name="uniRefMember" nillable="true" type="ax23:Set"/>
+                    <xs:element minOccurs="0" name="version" nillable="true" type="xs:int"/>
+                    <xs:element minOccurs="0" name="wid" nillable="true" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="findOMIMByGeneIDRequest">
+        <wsdl:part name="parameters" element="ns:findOMIMByGeneID"/>
+    </wsdl:message>
+    <wsdl:message name="findOMIMByGeneIDResponse">
+        <wsdl:part name="parameters" element="ns:findOMIMByGeneIDResponse"/>
+    </wsdl:message>
+    <wsdl:message name="findRangeRequest">
+        <wsdl:part name="parameters" element="ns:findRange"/>
+    </wsdl:message>
+    <wsdl:message name="findRangeResponse">
+        <wsdl:part name="parameters" element="ns:findRangeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="findOmimByIDRequest">
+        <wsdl:part name="parameters" element="ns:findOmimByID"/>
+    </wsdl:message>
+    <wsdl:message name="findOmimByIDResponse">
+        <wsdl:part name="parameters" element="ns:findOmimByIDResponse"/>
+    </wsdl:message>
+    <wsdl:message name="findRequest">
+        <wsdl:part name="parameters" element="ns:find"/>
+    </wsdl:message>
+    <wsdl:message name="findResponse">
+        <wsdl:part name="parameters" element="ns:findResponse"/>
+    </wsdl:message>
+    <wsdl:message name="findByGeneIDRequest">
+        <wsdl:part name="parameters" element="ns:findByGeneID"/>
+    </wsdl:message>
+    <wsdl:message name="findByGeneIDResponse">
+        <wsdl:part name="parameters" element="ns:findByGeneIDResponse"/>
+    </wsdl:message>
+    <wsdl:message name="findProteinByIDRequest">
+        <wsdl:part name="parameters" element="ns:findProteinByID"/>
+    </wsdl:message>
+    <wsdl:message name="findProteinByIDResponse">
+        <wsdl:part name="parameters" element="ns:findProteinByIDResponse"/>
+    </wsdl:message>
+    <wsdl:message name="findProteinByGeneIDRequest">
+        <wsdl:part name="parameters" element="ns:findProteinByGeneID"/>
+    </wsdl:message>
+    <wsdl:message name="findProteinByGeneIDResponse">
+        <wsdl:part name="parameters" element="ns:findProteinByGeneIDResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="GeneInfoFacadeRESTPortType">
+        <wsdl:operation name="findOMIMByGeneID">
+            <wsdl:input message="ns:findOMIMByGeneIDRequest" wsaw:Action="urn:findOMIMByGeneID"/>
+            <wsdl:output message="ns:findOMIMByGeneIDResponse" wsaw:Action="urn:findOMIMByGeneIDResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="findRange">
+            <wsdl:input message="ns:findRangeRequest" wsaw:Action="urn:findRange"/>
+            <wsdl:output message="ns:findRangeResponse" wsaw:Action="urn:findRangeResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="findOmimByID">
+            <wsdl:input message="ns:findOmimByIDRequest" wsaw:Action="urn:findOmimByID"/>
+            <wsdl:output message="ns:findOmimByIDResponse" wsaw:Action="urn:findOmimByIDResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="find">
+            <wsdl:input message="ns:findRequest" wsaw:Action="urn:find"/>
+            <wsdl:output message="ns:findResponse" wsaw:Action="urn:findResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="findByGeneID">
+            <wsdl:input message="ns:findByGeneIDRequest" wsaw:Action="urn:findByGeneID"/>
+            <wsdl:output message="ns:findByGeneIDResponse" wsaw:Action="urn:findByGeneIDResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="findProteinByID">
+            <wsdl:input message="ns:findProteinByIDRequest" wsaw:Action="urn:findProteinByID"/>
+            <wsdl:output message="ns:findProteinByIDResponse" wsaw:Action="urn:findProteinByIDResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="findProteinByGeneID">
+            <wsdl:input message="ns:findProteinByGeneIDRequest" wsaw:Action="urn:findProteinByGeneID"/>
+            <wsdl:output message="ns:findProteinByGeneIDResponse" wsaw:Action="urn:findProteinByGeneIDResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="GeneInfoFacadeRESTSoap11Binding" type="ns:GeneInfoFacadeRESTPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="findOMIMByGeneID">
+            <soap:operation soapAction="urn:findOMIMByGeneID" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="findRange">
+            <soap:operation soapAction="urn:findRange" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="findOmimByID">
+            <soap:operation soapAction="urn:findOmimByID" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="find">
+            <soap:operation soapAction="urn:find" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="findByGeneID">
+            <soap:operation soapAction="urn:findByGeneID" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="findProteinByID">
+            <soap:operation soapAction="urn:findProteinByID" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="findProteinByGeneID">
+            <soap:operation soapAction="urn:findProteinByGeneID" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="GeneInfoFacadeRESTSoap12Binding" type="ns:GeneInfoFacadeRESTPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="findOMIMByGeneID">
+            <soap12:operation soapAction="urn:findOMIMByGeneID" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="findRange">
+            <soap12:operation soapAction="urn:findRange" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="findOmimByID">
+            <soap12:operation soapAction="urn:findOmimByID" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="find">
+            <soap12:operation soapAction="urn:find" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="findByGeneID">
+            <soap12:operation soapAction="urn:findByGeneID" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="findProteinByID">
+            <soap12:operation soapAction="urn:findProteinByID" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="findProteinByGeneID">
+            <soap12:operation soapAction="urn:findProteinByGeneID" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="GeneInfoFacadeRESTHttpBinding" type="ns:GeneInfoFacadeRESTPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="findOMIMByGeneID">
+            <http:operation location="geneinfo/geneid/(id)/omim"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xmlapplication/json" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="findRange">
+            <http:operation location="geneinfo/(from)/(to)"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xmlapplication/json" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="findOmimByID">
+            <http:operation location="geneinfo/(id)/omim"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xmlapplication/json" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="find">
+            <http:operation location="geneinfo/(id)"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xmlapplication/json" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="findByGeneID">
+            <http:operation location="geneinfo/geneid/(id)"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xmlapplication/json" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="findProteinByID">
+            <http:operation location="geneinfo/(id)/protein"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xmlapplication/json" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="findProteinByGeneID">
+            <http:operation location="geneinfo/geneid/(id)/protein"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xmlapplication/json" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="geneinfo">
+        <wsdl:port name="GeneInfoFacadeRESTHttpSoap11Endpoint" binding="ns:GeneInfoFacadeRESTSoap11Binding">
+            <soap:address location="http://hydrax.icgeb.triesteit:8080/jbiowh-webservices/webservices/geneinfo"/>
+        </wsdl:port>
+        <wsdl:port name="GeneInfoFacadeRESTHttpSoap12Endpoint" binding="ns:GeneInfoFacadeRESTSoap12Binding">
+            <soap12:address location="http://hydrax.icgeb.triesteit:8080/jbiowh-webservices/webservices/geneinfo"/>
+        </wsdl:port>
+        <wsdl:port name="GeneInfoFacadeRESTHttpEndpoint" binding="ns:GeneInfoFacadeRESTHttpBinding">
+            <http:address location="http://hydrax.icgeb.triesteit:8080/jbiowh-webservices/webservices/geneinfo"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

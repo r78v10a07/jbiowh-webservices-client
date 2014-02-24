@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://hydrax.icgeb.trieste.it:8080/jbiowh-webservices/webservices/dataset?wsdl" uri="wsdl/hydrax.icgeb.trieste.it_8080/jbiowh-webservices/webservices/dataset.wsdl.xml"/>
+    <system systemId="file:/home/roberto/Dropbox/Developer/NetBeansProjects/jbiowh-framework/jbiowh-webservices/target/generated-resources/service.wsdl" uri="wsdl/service.wsdl"/>
+    <system systemId="file:/home/roberto/NetBeansProjects/jbiowh-framework/jbiowh-webservices/target/generated-resources/geneinfo.wsdl" uri="wsdl/geneinfo.wsdl"/>
+</catalog>
