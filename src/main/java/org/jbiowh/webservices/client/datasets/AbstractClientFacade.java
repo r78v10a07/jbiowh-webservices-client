@@ -5,7 +5,7 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
 
 /**
- * This class is
+ * This class is an Abstract Client Facade 
  *
  * $Author$ $LastChangedDate$ $LastChangedRevision$
  *
