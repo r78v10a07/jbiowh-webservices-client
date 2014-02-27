@@ -15,7 +15,7 @@ public abstract class AbstractClientFacade {
 
     protected WebTarget webTarget;
     protected Client client;
-    protected String BASE_URI = "http://hydrax.icgeb.trieste.it:8080/jbiowh-webservices/webservices";
+    protected String BASE_URI = "http://net.icgeb.org/jbiowh-webservices/webservices";
 
     public AbstractClientFacade(String path) {
         client = javax.ws.rs.client.ClientBuilder.newClient();
